@@ -1,0 +1,22 @@
+create database exfixacao_03;
+
+use exfixacao_03;
+
+
+create table animal (nomenclatura varchar(15) primary key, 
+numerodepatas int(3) not null, cobertopor varchar(15), 
+reproducao varchar(15), alimentacao varchar(15));
+
+
+create table mamifero (idmamifero int primary key auto_increment,
+habitat varchar(15) not null, fknomenclatura varchar(15) not null);
+
+
+alter table mamifero add constraint fkmf foreign key (fknomenclatura) references animal (nomenclatura) on update restrict on delete restrict;
+
+
+create table reptil (capacidaderegenerativa boolean, 
+fknomenclatura varchar(15) not null);
+
+
+alter table reptil add constraint fkrt foreign key (fknomenclatura) references animal (nomenclatura) on update restrict on delete restrict;
